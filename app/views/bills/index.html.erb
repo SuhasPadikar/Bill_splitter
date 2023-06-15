@@ -1,0 +1,36 @@
+<h1>Bills</h1>
+
+<% @bills.each do |bill| %>
+  <h2><%= bill.name %></h2>
+  <% if bill.payments.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Member Name</th>
+          <th>Money Spent</th>
+          <th>Equal Share</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bill.payments.each do |payment| %>
+          <tr>
+            <td><%= payment.member_name %></td>
+            <td><%= payment.money_spent %></td>
+            <td><%= bill.equal_share %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No payments recorded for this bill.</p>
+  <% end %>
+
+  <div class="actions">
+    <%= link_to 'Show', bill %>
+    <%= link_to 'Edit', edit_bill_path(bill) %>
+  </div>
+<% end %>
+
+<div class="actions">
+  <%= link_to 'New Bill', new_bill_path %>
+</div>

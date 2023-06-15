@@ -1,0 +1,26 @@
+<p>
+  <strong>Name:</strong>
+  <%= @bill.name %>
+</p>
+
+<h2>Payments</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member Name</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bill.payments.each do |payment| %>
+      <tr>
+        <td><%= payment.member_name %></td>
+        <td><%= payment.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Payment', new_bill_payment_path(@bill) %>
+<%= link_to 'Back', bills_path %>
